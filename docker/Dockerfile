@@ -36,10 +36,10 @@ RUN virtualenv -p python2.7 pre141 \
 
 # setup pre venv
 # use older version of setuptools or things won't build
-RUN /rgtm/pre141/bin/pip install -U pip \
- && /rgtm/pre141/bin/pip install -U nose==1.3.7 \
- && /rgtm/pre141/bin/pip install -U wheel setuptools==20.1.1 \
- && /rgtm/pre141/bin/pip install \
+RUN /rgtm/pre141/bin/pip --no-python-version-warning install -U pip \
+ && /rgtm/pre141/bin/pip --no-python-version-warning install -U wheel setuptools==20.1.1 \
+ && /rgtm/pre141/bin/pip --no-python-version-warning install nose==1.3.7 \
+ && /rgtm/pre141/bin/pip --no-python-version-warning install \
       git+https://github.com/rosin-project/rosdistro_python@rosin_bughunt_0.2.20#egg=rosdistro \
       rosinstall==0.7.2 \
       rosdep==0.10.24 \
@@ -52,9 +52,9 @@ RUN /rgtm/pre141/bin/pip install -U pip \
  && rm -rf /root/.cache/pip
 
 # setup post venv
-RUN /rgtm/post141/bin/pip install -U pip \
- && /rgtm/post141/bin/pip install -U wheel setuptools==44.0.0 \
- && /rgtm/post141/bin/pip install \
+RUN /rgtm/post141/bin/pip --no-python-version-warning install -U pip \
+ && /rgtm/post141/bin/pip --no-python-version-warning install -U wheel setuptools==44.0.0 \
+ && /rgtm/post141/bin/pip --no-python-version-warning install \
       git+https://github.com/rosin-project/rosdistro_python@rosin_bughunt_0.8.3_test#egg=rosdistro \
       rosinstall_generator \
  && rm -rf /root/.cache/pip
