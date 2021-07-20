@@ -187,10 +187,10 @@ else
 
   printf "Building cache ..\n" >&2
   # TODO: error handling
-  docker run \
-    -it \
+  yes n | docker run \
+    -i \
     --rm \
-    --user=$(id -u):$(id -g) \
+    --user=1001  \
     -v "${CLOSEST_CACHE_DIR}/${ROSDISTRO_CACHE_FILENAME}":${DOCKER_CONTAINER_CACHE_FILENAME}:ro \
     -v "${ROSDISTRO_DIR}":${DOCKER_CONTAINER_ROSDISTRO_DIR}:ro \
     -v "${ROSDISTRO_CACHE_DIR}":${DOCKER_RGTM_WORK_DIR} \
